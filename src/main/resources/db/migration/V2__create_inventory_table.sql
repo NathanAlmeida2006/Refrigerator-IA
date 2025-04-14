@@ -1,0 +1,4 @@
+CREATE TABLE inventory
+(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY
+);
