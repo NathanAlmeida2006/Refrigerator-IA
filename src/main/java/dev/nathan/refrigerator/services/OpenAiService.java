@@ -1,4 +1,7 @@
 package dev.nathan.refrigerator.services;
 
-public class OpenAiService {
+import java.util.List;
+
+public interface OpenAiService {
+    String generateRecipe(List<String> ingredients); // Returns String or throws AI/runtime exception
 }

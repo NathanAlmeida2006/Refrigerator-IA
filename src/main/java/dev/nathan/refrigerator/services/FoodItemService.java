@@ -1,17 +1,20 @@
 package dev.nathan.refrigerator.services;
 
-import dev.nathan.refrigerator.models.FoodItem;
+import dev.nathan.refrigerator.dtos.FoodItemRequestDTO;
+import dev.nathan.refrigerator.dtos.FoodItemResponseDTO;
 
 import java.util.List;
 
 public interface FoodItemService {
-    FoodItem createFoodItem(FoodItem foodItem);
+    FoodItemResponseDTO createFoodItem(FoodItemRequestDTO requestDTO);
 
-    List<FoodItem> findAllFoodItems();
+    List<FoodItemResponseDTO> findAllFoodItems();
 
-    FoodItem getFoodItemById(Long id);
+    FoodItemResponseDTO getFoodItemById(Long id); // Implicitly throws if not found
 
-    FoodItem updateFoodItem(Long id, FoodItem foodItem);
+    FoodItemResponseDTO updateFoodItem(Long id, FoodItemRequestDTO requestDTO); // Implicitly throws if not found
 
-    void deleteFoodItem(Long id);
+    void deleteFoodItem(Long id); // Implicitly throws if not found (or is idempotent)
+
+    String suggestRecipe(); // Returns String or throws AI/runtime exception
 }
