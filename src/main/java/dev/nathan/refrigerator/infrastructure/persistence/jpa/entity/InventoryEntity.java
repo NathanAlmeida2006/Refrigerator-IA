@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,5 +23,6 @@ public class InventoryEntity {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "inventory_id")
-    private List<IngredientEntity> ingredients;
+    @Builder.Default
+    private List<IngredientEntity> ingredients = new ArrayList<>();
 }

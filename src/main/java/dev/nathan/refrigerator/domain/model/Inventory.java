@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -13,5 +14,6 @@ import java.util.List;
 @AllArgsConstructor
 public class Inventory {
     private Long id;
-    private List<Ingredient> ingredients;
+    @Builder.Default
+    private List<Ingredient> ingredients = new ArrayList<>();
 }

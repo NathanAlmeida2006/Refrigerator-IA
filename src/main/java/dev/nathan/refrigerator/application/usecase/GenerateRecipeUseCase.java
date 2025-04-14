@@ -7,6 +7,7 @@ import dev.nathan.refrigerator.domain.port.AiRecipeGeneratorPort;
 import dev.nathan.refrigerator.domain.port.InventoryRepositoryPort;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,9 +24,11 @@ public class GenerateRecipeUseCase {
     public Recipe execute(Long inventoryId) {
         Inventory inventory = inventoryRepository.findById(inventoryId)
                 .orElseThrow(() -> new RuntimeException("Inventory not found"));
-        List<String> ingredients = inventory.getIngredients().stream()
+        List<String> ingredients = inventory.getIngredients() != null
+                ? inventory.getIngredients().stream()
                 .map(Ingredient::getName)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList())
+                : Collections.emptyList();
         return aiRecipeGenerator.generateRecipe(ingredients);
     }
 }

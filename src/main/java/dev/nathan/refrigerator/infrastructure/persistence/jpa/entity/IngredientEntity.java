@@ -18,12 +18,12 @@ public class IngredientEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(nullable = false)
-    private double quantity;
+    @Column(name = "quantity", nullable = false)
+    private Double quantity;
 
-    @Column(nullable = false)
+    @Column(name = "unit")
     private String unit;
 }
